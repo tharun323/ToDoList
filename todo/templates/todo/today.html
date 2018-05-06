@@ -1,0 +1,102 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    h1
+    {
+    font-family:'Roboto',sans-serif;font-size:50px;color:#272578;
+    }
+    h2
+    {
+    font-family: 'Arima Madurai', cursive;
+    }
+    p
+    {
+    font-family: 'Oleo Script', cursive;
+    }
+    .container
+    {
+    background-color:#B6B6CD;
+    }
+    .container:hover
+    {
+    background-color:#D5E3AF   ;
+    }
+    form
+    {
+    display:inline;
+    padding-right:20px;
+    }
+     body
+    {
+    background-color:#DDAE79  ;
+    }
+</style>
+<body>
+<center>
+
+<h1><u><a href="/todo">Todo app</a></u></h1>
+
+<!-- End of form -->
+
+
+<!-- Search button -->
+<h2 style="font-family: 'Arima Madurai', cursive;"> Search </h2>
+<form method="GET" action=''>
+    <input type="text" placeholder="keyword of Task " name="q"/>
+    <input type="submit" value="Search"/>
+</form>
+<!-- end of search button -->
+
+<!-- these are filter buttons -->
+    <form id="1" action="{% url 'todo:today' %}">
+    <input type="submit" value="Today's Tasks" />
+</form>
+    <form id="2" action="{% url 'todo:week' %}">
+    <input type="submit" value="This Week" />
+</form>
+    <form id="3" action="{% url 'todo:nweek' %}">
+    <input type="submit" value="Next Week" />
+</form>
+    <form id="4" action="{% url 'todo:overdue' %}">
+    <input type="submit" value="Overdue " />
+        <br><br>
+</form>
+
+<!-- end of filter buttons-->
+
+</center>
+
+{% if res %}
+{% for i in res %}
+<div class="container">
+    <h1 style="font-family: 'Open Sans', sans-serif;">TASK {{forloop.counter}}:</h1>
+<h2 >{{i.title}}</h2><p> Do it by : {{i.due_date}}</p>
+<h3>Status: {{i.state}}</h3>
+<form id="4" action="{% url 'todo:delete' i.id%}">
+    <input type="submit" value="Delete Task" />
+</form>
+    <br>
+</div>
+<br><br>
+{% endfor %}
+<br>
+{% else %}
+<h1>NO RESULTS</h1>
+{% endif %}
+
+</body>
+</html>
