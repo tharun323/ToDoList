@@ -83,7 +83,7 @@
 {% if res %}
 {% for i in res %}
 <div class="container">
-    <h1 style="font-family: 'Open Sans', sans-serif;">TASK {{forloop.counter}}:</h1>
+    <h1 style="font-family: 'Open Sans', sans-serif;"><u>TASK {{forloop.counter}}:</u></h1>
 <h2 >{{i.title}}</h2><p> Do it by : {{i.due_date}}</p>
 <h3>Status: {{i.state}}</h3>
 <form id="4" action="{% url 'todo:delete' i.id%}">

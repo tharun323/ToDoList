@@ -13,7 +13,7 @@ class Task(models.Model):
         (PENDING,'PENDING'),
     )
     title=models.CharField(max_length=200)
-    due_date=models.DateTimeField(blank=True)
+    due_date=models.DateTimeField(blank=True,null=True)
     state=models.CharField(max_length=10,choices=STATE_CHOICES,default=PENDING)
 
 
