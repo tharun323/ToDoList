@@ -48,7 +48,7 @@ pbr==4.0.1
 Pillow==5.1.0
 pluggy==0.6.0
 psycopg2==2.7.4
-py==1.5.3
+py==1.10.0
 pyasn1==0.4.2
 pyasn1-modules==0.2.1
 pycparser==2.18
